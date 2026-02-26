@@ -1,33 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registro Créditos y Trámites</title>
-</head>
-<body>
-    <h2>Registro Cliente</h2>
-    <form id="form">
-        <input type="text" id="nombre" placeholder="Nombre" required><br><br>
-        <input type="text" id="cedula" placeholder="Cédula" required><br><br>
-        <button type="submit">Registrar</button>
-    </form>
-
-    <script>
-        document.getElementById('form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const cedula = document.getElementById('cedula').value;
-
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    paso_1_registro: { nombre, cedula }
-                })
-            });
-
-            const data = await response.json();
-            alert(data.message);
-        });
-    </script>
-</body>
-</html>
+{
+  "name": "creditosytramites",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de créditos y seguros",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2"
+  }
+}
