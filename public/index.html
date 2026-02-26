@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registro Créditos y Trámites</title>
+  <title>Registro - Créditos y Trámites</title>
 </head>
 <body>
-    <h2>Registro Cliente</h2>
-    <form id="form">
-        <input type="text" id="nombre" placeholder="Nombre" required><br><br>
-        <input type="text" id="cedula" placeholder="Cédula" required><br><br>
-        <button type="submit">Registrar</button>
-    </form>
+  <h2>Registro de Usuario</h2>
 
-    <script>
-        document.getElementById('form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const cedula = document.getElementById('cedula').value;
+  <form id="form">
+    <input type="text" id="nombre" placeholder="Nombre" required><br><br>
+    <input type="text" id="apellido" placeholder="Apellido" required><br><br>
+    <input type="email" id="correo" placeholder="Correo electrónico" required><br><br>
+    <input type="text" id="telefono" placeholder="Teléfono" required><br><br>
+    <input type="password" id="password" placeholder="Contraseña" required><br><br>
 
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    paso_1_registro: { nombre, cedula }
-                })
-            });
+    <button type="submit">Registrarse</button>
+  </form>
 
-            const data = await response.json();
-            alert(data.message);
-        });
-    </script>
+  <script>
+    document.getElementById('form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const apellido = document.getElementById('apellido').value;
+      const correo = document.getElementById('correo').value;
+      const telefono = document.getElementById('telefono').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          usuario: { nombre, apellido, correo, telefono, password }
+        })
+      });
+
+      const data = await response.json();
+      alert(data.message);
+    });
+  </script>
 </body>
 </html>
