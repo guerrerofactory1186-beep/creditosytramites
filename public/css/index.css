@@ -1,54 +1,119 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .container {
-    text-align: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
 }
 
+/* TARJETA */
 .card {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    width: 350px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 45px 35px;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* TITULOS */
 h1 {
-    margin-bottom: 10px;
-    color: #1e3c72;
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #1a2a3a;
+  font-weight: 600;
 }
 
 p {
-    color: #555;
-    margin-bottom: 20px;
+  color: #5a6b7c;
+  margin-bottom: 25px;
+  font-size: 14px;
 }
 
+/* INPUTS */
 input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
+input:focus {
+  outline: none;
+  border-color: #1e3c72;
+  box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.15);
+}
+
+/* BOTONES */
 button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1e3c72;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #16335a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 35px;
+  width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+  animation: fadeIn 0.25s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from {
+    transform: translateY(15px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
