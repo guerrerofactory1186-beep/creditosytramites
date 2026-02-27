@@ -1,42 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Registro - Créditos y Trámites</title>
+  <meta charset="UTF-8">
+  <title>Créditos & Pólizas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
+
 <body>
-  <h2>Registro de Usuario</h2>
 
-  <form id="form">
-    <input type="text" id="nombre" placeholder="Nombre" required><br><br>
-    <input type="text" id="apellido" placeholder="Apellido" required><br><br>
-    <input type="email" id="correo" placeholder="Correo electrónico" required><br><br>
-    <input type="text" id="telefono" placeholder="Teléfono" required><br><br>
-    <input type="password" id="password" placeholder="Contraseña" required><br><br>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">CRÉDITOS & PÓLIZAS</div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#contacto">Contacto</a>
+      <button onclick="mostrarLogin()">Ingresar</button>
+    </nav>
+  </header>
 
-    <button type="submit">Registrarse</button>
-  </form>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Soluciones Financieras para Militares, Pensionados y Comerciantes</h1>
+    <p>Créditos seguros y pólizas adaptadas a su perfil</p>
+    <button onclick="mostrarRegistro()">Crear Cuenta</button>
+  </section>
 
-  <script>
-    document.getElementById('form').addEventListener('submit', async function(e) {
-      e.preventDefault();
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section">
+    <h2>Nuestros Servicios</h2>
+    <div class="cards">
+      <div class="card">Créditos por Libranza</div>
+      <div class="card">Pólizas de Vida</div>
+      <div class="card">Refinanciaciones</div>
+    </div>
+  </section>
 
-      const nombre = document.getElementById('nombre').value;
-      const apellido = document.getElementById('apellido').value;
-      const correo = document.getElementById('correo').value;
-      const telefono = document.getElementById('telefono').value;
-      const password = document.getElementById('password').value;
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="section gray">
+    <h2>¿Por qué elegirnos?</h2>
+    <ul>
+      <li>✔ Atención especializada para Ejército y Policía</li>
+      <li>✔ Tasas competitivas</li>
+      <li>✔ Proceso 100% digital</li>
+    </ul>
+  </section>
 
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          usuario: { nombre, apellido, correo, telefono, password }
-        })
-      });
+  <!-- FORMULARIOS MODALES -->
+  <div id="modalRegistro" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal('modalRegistro')">&times;</span>
+      <h2>Registro</h2>
+      <form id="formRegistro">
+        <input type="email" id="correoRegistro" placeholder="Correo" required>
+        <input type="password" id="passwordRegistro" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+  </div>
 
-      const data = await response.json();
-      alert(data.message);
-    });
-  </script>
+  <div id="modalLogin" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal('modalLogin')">&times;</span>
+      <h2>Iniciar Sesión</h2>
+      <form id="formLogin">
+        <input type="email" id="correoLogin" placeholder="Correo" required>
+        <input type="password" id="passwordLogin" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- BOTÓN ADMIN OCULTO -->
+  <div class="admin-hidden" onclick="window.location='/admin.html'"></div>
+
+  <!-- FOOTER -->
+  <footer id="contacto">
+    <p>© 2026 Créditos & Pólizas | Todos los derechos reservados</p>
+  </footer>
+
+  <script src="/js/index.js"></script>
 </body>
 </html>
