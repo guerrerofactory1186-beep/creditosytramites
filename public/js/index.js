@@ -1,15 +1,18 @@
-document.getElementById("formRegistro").addEventListener("submit", async (e) => {
-    e.preventDefault();
+function cerrarTodos() {
+  document.getElementById("modalRegistro").style.display = "none";
+  document.getElementById("modalLogin").style.display = "none";
+}
 
-    const correo = document.getElementById("correo").value;
-    const password = document.getElementById("password").value;
+function mostrarRegistro() {
+  cerrarTodos();
+  document.getElementById("modalRegistro").style.display = "flex";
+}
 
-    const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correo, password })
-    });
+function mostrarLogin() {
+  cerrarTodos();
+  document.getElementById("modalLogin").style.display = "flex";
+}
 
-    const data = await res.json();
-    alert(data.message || "Registro enviado");
-});
+function cerrarModal(id) {
+  document.getElementById(id).style.display = "none";
+}
